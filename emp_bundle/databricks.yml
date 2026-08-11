@@ -13,6 +13,7 @@ targets:
     default: true
     workspace:
       host: https://dbc-e1b5fcb7-220b.cloud.databricks.com
+    
 
   # The 'prod' target, used for production deployment.
   prod:
@@ -25,3 +26,4 @@ targets:
       # This runs as kishorevkk7979@gmail.com in production. We could also use a service principal here,
       # see https://docs.databricks.com/dev-tools/bundles/permissions.html.
       user_name: kishorevkk7979@gmail.com
+    

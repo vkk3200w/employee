@@ -34,7 +34,7 @@ print(f"Records read: {raw_df.count()}")
 print("Source schema:")
 raw_df.printSchema()
 
-print("Sample data:")
+print("Sample data1:")
 raw_df.show(5, truncate=False)
 
 # ============================================================
