@@ -48,7 +48,7 @@ resources:
           environment_key: default
 
           spark_python_task:
-            python_file: ../src/employee_silverpy
+            python_file: ../src/employee_silver.py
 
 
         # ================================================
