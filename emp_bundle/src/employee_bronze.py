@@ -7,8 +7,7 @@ spark = SparkSession.builder.getOrCreate()
 # ============================================================
 
 SOURCE_PATH = (
-    "/Volumes/workspace/default/hr_analytics/"
-    "WA_Fn-UseC_-HR-Employee-Attrition.csv"
+    "/Volumes/workspace/default/employee_csv"
 )
 
 BRONZE_TABLE = "employee_attrition_bronze"
