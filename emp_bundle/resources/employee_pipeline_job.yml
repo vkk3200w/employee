@@ -32,7 +32,7 @@ resources:
           environment_key: default
 
           spark_python_task:
-            python_file: ../src/01_bronze_ingestion.py
+            python_file: ../src/employee_bronze.py
 
 
         # ================================================
@@ -48,7 +48,7 @@ resources:
           environment_key: default
 
           spark_python_task:
-            python_file: ../src/02_silver_clean_validate.py
+            python_file: ../src/employee_silverpy
 
 
         # ================================================
@@ -64,4 +64,4 @@ resources:
           environment_key: default
 
           spark_python_task:
-            python_file: ../src/03_gold_attrition_analytics.py
+            python_file: ../src/employee_gold.py
