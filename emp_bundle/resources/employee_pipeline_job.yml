@@ -5,42 +5,63 @@ resources:
 
       name: "[${bundle.target}] Employee Attrition Pipeline"
 
+      # ==================================================
+      # SERVERLESS ENVIRONMENT
+      # ==================================================
+
+      environments:
+
+        - environment_key: default
+
+          spec:
+            environment_version: "2"
+
+
+      # ==================================================
+      # TASKS
+      # ==================================================
+
       tasks:
 
-        # ==================================================
-        # TASK 1 — BRONZE INGESTION
-        # ==================================================
+        # ================================================
+        # TASK 1 — BRONZE
+        # ================================================
 
         - task_key: bronze_ingestion
 
+          environment_key: default
+
           spark_python_task:
-            python_file: ../src/employee_bronze.py
+            python_file: ../src/01_bronze_ingestion.py
 
 
-        # ==================================================
-        # TASK 2 — SILVER CLEANING + DATA QUALITY
-        # ==================================================
+        # ================================================
+        # TASK 2 — SILVER + DATA QUALITY
+        # ================================================
 
         - task_key: silver_clean_validate
 
           depends_on:
+
             - task_key: bronze_ingestion
 
+          environment_key: default
+
           spark_python_task:
-            python_file: ../src/employee_silver.py
+            python_file: ../src/02_silver_clean_validate.py
 
 
-        # ==================================================
-        # TASK 3 — GOLD ANALYTICS
-        # ==================================================
+        # ================================================
+        # TASK 3 — GOLD
+        # ================================================
 
         - task_key: gold_attrition_analytics
 
           depends_on:
+
             - task_key: silver_clean_validate
 
+          environment_key: default
+
           spark_python_task:
-            python_file: ../src/employee_gold.py
-
-
-
+            python_file: ../src/03_gold_attrition_analytics.py
