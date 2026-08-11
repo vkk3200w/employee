@@ -1,0 +1,27 @@
+# Declarative Automation Bundle configuration, more info here: https://docs.databricks.com/en/dev-tools/bundles/settings.html
+bundle:
+  name: "emp_bundle"
+
+include:
+  - resources/*.yml
+  - resources/*/*.yml
+
+targets:
+  # The 'dev' target, for development purposes. This target is the default.
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-e1b5fcb7-220b.cloud.databricks.com
+
+  # The 'prod' target, used for production deployment.
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-e1b5fcb7-220b.cloud.databricks.com
+      # We always use /Users/kishorevkk7979@gmail.com for all resources to make sure we only have a single copy.
+      root_path: /Users/kishorevkk7979@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    run_as:
+      # This runs as kishorevkk7979@gmail.com in production. We could also use a service principal here,
+      # see https://docs.databricks.com/dev-tools/bundles/permissions.html.
+      user_name: kishorevkk7979@gmail.com
