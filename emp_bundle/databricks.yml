@@ -2,6 +2,11 @@
 bundle:
   name: "emp_bundle"
 
+variables:
+  pipeline_env:
+    description: "Environment in which the employee attrition pipeline runs"
+    default: "DEVELOPMENT"
+
 include:
   - resources/*.yml
   - resources/*/*.yml
@@ -13,6 +18,8 @@ targets:
     default: true
     workspace:
       host: https://dbc-e1b5fcb7-220b.cloud.databricks.com
+    variables:
+      pipeline_env: "DEVELOPMENT"
     
 
   # The 'prod' target, used for production deployment.
@@ -22,6 +29,8 @@ targets:
       host: https://dbc-e1b5fcb7-220b.cloud.databricks.com
       # We always use /Users/kishorevkk7979@gmail.com for all resources to make sure we only have a single copy.
       root_path: /Users/kishorevkk7979@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      pipeline_env: "PRODUCTION"
     run_as:
       # This runs as kishorevkk7979@gmail.com in production. We could also use a service principal here,
       # see https://docs.databricks.com/dev-tools/bundles/permissions.html.
