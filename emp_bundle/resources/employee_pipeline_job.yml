@@ -1,7 +1,7 @@
 resources:
   jobs:
 
-    employee_attrition_job:
+    sample_job:
 
       name: "[${bundle.target}] Employee Attrition Pipeline"
 
