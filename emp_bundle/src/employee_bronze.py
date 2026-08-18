@@ -5,7 +5,7 @@ spark = SparkSession.builder.getOrCreate()
 # ============================================================
 # CONFIGURATION
 # ============================================================
-
+print("BRONZE INGESTION STARTING")
 SOURCE_PATH = (
     "/Volumes/workspace/default/employee_csv"
 )
